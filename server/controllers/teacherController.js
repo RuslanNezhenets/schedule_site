@@ -70,8 +70,8 @@ class TeacherController {
         } else if (!email){
             email = null
         }
-        if(telegram && ((await Teacher.findAll({where: {telegram}})).length > 1 ||
-            Teacher.findOne({where: {telegram}}).id != id)){
+        if(telegram && ((await Teacher.findAll({where: {telegram, [Op.ne]: id}})).length > 1 ||
+            Teacher.findOne({where: {telegram}}).id !== id)){
             return res.status(400).json({message: "Преподаватель с таким telegram уже существует"})
         } else if (!telegram){
             telegram = null
