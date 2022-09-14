@@ -1,0 +1,22 @@
+body {
+  margin: 15px;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after{
+  box-sizing: border-box;
+}
+
+.error{
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+/**********************Blocks***********************/
+@import "blocks/Lesson";
+@import "blocks/Schedule";
+@import "blocks/Teacher";

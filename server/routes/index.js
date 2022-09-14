@@ -1,0 +1,21 @@
+const Router = require('express')
+const router = new Router()
+const teacherRoutes = require('./teacherRoutes')
+const studentRoutes = require('./studentRoutes')
+const disciplineRoutes = require('./disciplineRoutes')
+const lessonRoutes = require('./lessonRoutes')
+const typeRoutes = require('./typeRoutes')
+const scheduleRoutes = require('./scheduleRoutes')
+const timetableRoutes = require('./timetableRoutes')
+const teacherlessonRoutes = require('./teacherlessonRoutes')
+
+router.use('/student', studentRoutes)
+router.use('/teacher', teacherRoutes)
+router.use('/discipline', disciplineRoutes)
+router.use('/lesson', lessonRoutes)
+router.use('/type', typeRoutes)
+router.use('/timetable', timetableRoutes)
+router.use('/schedule', scheduleRoutes)
+router.use('/teacherlesson', teacherlessonRoutes)
+
+module.exports = router
