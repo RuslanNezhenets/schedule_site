@@ -9,6 +9,7 @@ export default class ScheduleStore {
         this._teacher_lesson = []
         this._teacher = []
         this._table = []
+        this._student = []
         makeAutoObservable(this)
     }
 
@@ -26,6 +27,10 @@ export default class ScheduleStore {
 
     setType(type) {
         this._type = type
+    }
+
+    setStudent(student){
+        this._student = student
     }
 
     setTeacherLesson(teacher_lesson) {
@@ -90,16 +95,18 @@ export default class ScheduleStore {
         return this._teacher
     }
 
+    get students() {
+        return this._student
+    }
+
     get table() {
         return this._table
     }
 
     Lesson(week, day, timetableId) {
-        const data = this._schedule.filter(schedule => schedule.week === week)
+        return this._schedule.filter(schedule => schedule.week === week)
             .filter(schedule => schedule.day === day)
             .filter(schedule => schedule.timeTableId === timetableId)
-        //console.log(data);
-        return data
     }
 
 }

@@ -47,6 +47,7 @@ class TeacherController {
 
     async update(req, res) {
         let {surname, name, patronymic, phone, email, telegram, id} = req.body
+
         if(!id){
             throw new Error("не указан ID")
         }
@@ -60,18 +61,22 @@ class TeacherController {
             return res.status(400).json({message: "Отчество не может отсутствовать"})
         }
 
-        if(phone && (await Teacher.findAll({where: {phone}})).length > 0){
+        let teacher = await Teacher.findOne({where: {phone}})
+        if(phone && teacher && teacher.id !== id){
             return res.status(400).json({message: "Преподаватель с таким номером уже существует"})
         } else if (!phone) {
             phone = null
         }
-        if(email && (await Teacher.findAll({where: {email}})).length > 0){
+
+        teacher = await Teacher.findOne({where: {email}})
+        if(email && teacher && teacher.id !==id){
             return res.status(400).json({message: "Преподаватель с таким email уже существует"})
         } else if (!email){
             email = null
         }
-        if(telegram && ((await Teacher.findAll({where: {telegram, [Op.ne]: id}})).length > 1 ||
-            Teacher.findOne({where: {telegram}}).id !== id)){
+
+        teacher = await Teacher.findOne({where: {telegram}})
+        if(telegram && teacher && teacher.id !== id){
             return res.status(400).json({message: "Преподаватель с таким telegram уже существует"})
         } else if (!telegram){
             telegram = null
