@@ -1,51 +1,51 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
-import {fetchStudent} from "../http/scheduleApi";
+import {fetchDiscipline, fetchStudent} from "../http/scheduleApi";
 import {Button} from "react-bootstrap";
-import StudentModal from "../components/UI/Modal/StudentModal";
-import StudentItem from "../components/StudentItem";
+import DisciplineModal from "../components/UI/Modal/DisciplineModal";
+import DisciplineItem from "../components/DisciplineItem";
 
-const Student = observer(() => {
+const Discipline = observer(() => {
     const {schedule} = useContext(Context)
     const [modalShow, setModalShow] = React.useState(false);
     const [update, setUpdate] = useState(false)
     const [active, setActive] = useState(null)
 
     useEffect(() => {
-        updateStudent()
+        updateDiscipline()
     }, [schedule])
 
-    const createStudent = (newStudent) => {
-        schedule.setStudent([...schedule.students, newStudent])
+    const createDiscipline = (newDiscipline) => {
+        schedule.setStudent([...schedule.students, newDiscipline])
         setModalShow(false)
-        updateStudent()
+        updateDiscipline()
     }
 
-    const updateStudent = () => {
-        fetchStudent().then(data => schedule.setStudent(data))
+    const updateDiscipline = () => {
+        fetchDiscipline().then(data => schedule.setDiscipline(data))
     }
 
     return (
         <div>
-            <StudentModal
+            <DisciplineModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
-                create={createStudent}
+                create={createDiscipline}
                 update={update}
                 item={active}
-                updateStudent={updateStudent}
+                updateDiscipline={updateDiscipline}
                 setModalShow={setModalShow}
             />
             <div className="items">
-                {schedule.students.map((student, i) =>
-                    <StudentItem
+                {schedule.disciplines.map((discipline, i) =>
+                    <DisciplineItem
                         key={i}
-                        item={student}
+                        item={discipline}
                         onClick={() => {
                             setUpdate(true)
                             setModalShow(true)
-                            setActive(student)
+                            setActive(discipline)
                         }}
                     />
                 )}
@@ -57,10 +57,10 @@ const Student = observer(() => {
                     setUpdate(false)
                 }}
             >
-                Добавить студента
+                Добавить дисциплину
             </Button>
         </div>
     );
 });
 
-export default Student;
+export default Discipline;

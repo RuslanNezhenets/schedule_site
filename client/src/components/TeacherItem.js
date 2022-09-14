@@ -4,13 +4,13 @@ import '../style/main.scss'
 
 const TeacherItem = ({item, onClick}) => {
     return (
-        <Card className="teacher" onClick={onClick}>
-            <div>Фамилия: {item.surname}</div>
-            <div>Имя: {item.name}</div>
-            <div>Отчество: {item.patronymic}</div>
-            {item.phone ? <div>Телефон: {item.phone}</div> : <div> Телефон: --- </div>}
-            {item.email ? <div>Телефон: {item.email}</div> : <div> Телефон: --- </div>}
-            {item.telegram ? <div>Телефон: {item.telegram}</div> : <div> Телефон: --- </div>}
+        <Card className="item" onClick={onClick}>
+            <div><b>Фамилия:</b> {item.surname}</div>
+            <div><b>Имя:</b> {item.name}</div>
+            <div><b>Отчество:</b> {item.patronymic}</div>
+            {item.phone ? <div><b>Телефон:</b> {item.phone}</div> : <div><b>Телефон:</b> --- </div>}
+            {item.email ? <div><b>Почта:</b> {item.email}</div> : <div><b>Почта:</b> --- </div>}
+            {item.telegram ? <div><b>Телеграм:</b> {item.telegram}</div> : <div><b>Телефон:</b> --- </div>}
         </Card>
     );
 };

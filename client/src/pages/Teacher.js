@@ -37,7 +37,7 @@ const Teacher = observer(() => {
                 updateTeacher={updateTeacher}
                 setModalShow={setModalShow}
             />
-            <div className="teachers">
+            <div className="items">
                 {schedule.teachers.map((teacher, i) =>
                         <TeacherItem
                             key={i}
@@ -51,7 +51,7 @@ const Teacher = observer(() => {
                 )}
             </div>
             <Button
-                className="teacher-btn"
+                className="item-btn"
                 onClick={() => {
                     setModalShow(true)
                     setUpdate(false)

@@ -16,7 +16,15 @@ body {
   font-size: 20px;
 }
 
+.navbar{
+  margin: -15px -15px 10px -15px;
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
 /**********************Blocks***********************/
 @import "blocks/Lesson";
 @import "blocks/Schedule";
-@import "blocks/Teacher";
+@import "blocks/Item";

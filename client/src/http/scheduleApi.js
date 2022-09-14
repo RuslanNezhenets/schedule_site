@@ -10,11 +10,6 @@ export const fetchLesson = async () => {
     return data
 }
 
-export const fetchDiscipline = async () => {
-    const {data} = await $host.get('api/discipline')
-    return data
-}
-
 export const fetchType = async () => {
     const {data} = await $host.get('api/type')
     return data
@@ -66,5 +61,27 @@ export const updateStudent = async (student) => {
 
 export const deleteStudent = async (id) => {
     const {data} = await $host.delete('api/student/' + id)
+    return data
+}
+
+//===== Discipline =====//
+
+export const fetchDiscipline = async () => {
+    const {data} = await $host.get('api/discipline')
+    return data
+}
+
+export const createDiscipline = async (newDiscipline) => {
+    const {data} = await $host.post('api/discipline', newDiscipline)
+    return data
+}
+
+export const updateDiscipline = async (discipline) => {
+    const {data} = await $host.put('api/discipline', discipline)
+    return data
+}
+
+export const deleteDiscipline = async (id) => {
+    const {data} = await $host.delete('api/discipline/' + id)
     return data
 }
