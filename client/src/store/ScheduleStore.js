@@ -1,4 +1,5 @@
 import {makeAutoObservable} from "mobx";
+import discipline from "../pages/Discipline";
 
 export default class ScheduleStore {
     constructor() {
@@ -10,6 +11,7 @@ export default class ScheduleStore {
         this._teacher = []
         this._table = []
         this._student = []
+        this._elective = []
         makeAutoObservable(this)
     }
 
@@ -43,6 +45,10 @@ export default class ScheduleStore {
 
     setTable(table) {
         this._table = table
+    }
+
+    setElective(elective) {
+        this._elective = elective
     }
 
     searchLesson(id) {
@@ -102,6 +108,11 @@ export default class ScheduleStore {
     get table() {
         return this._table
     }
+
+    get electives() {
+        return this._elective
+    }
+
 
     Lesson(week, day, timetableId) {
         return this._schedule.filter(schedule => schedule.week === week)

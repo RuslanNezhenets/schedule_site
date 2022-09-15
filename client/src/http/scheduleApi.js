@@ -85,3 +85,25 @@ export const deleteDiscipline = async (id) => {
     const {data} = await $host.delete('api/discipline/' + id)
     return data
 }
+
+//===== Elective =====//
+
+export const fetchElective = async () => {
+    const {data} = await $host.get('api/studentDiscipline')
+    return data
+}
+
+export const createElective = async (newElective) => {
+    const {data} = await $host.post('api/studentDiscipline', newElective)
+    return data
+}
+
+export const updateElective = async (elective) => {
+    const {data} = await $host.put('api/studentDiscipline', elective)
+    return data
+}
+
+export const deleteElective = async (id) => {
+    const {data} = await $host.delete('api/studentDiscipline/' + id)
+    return data
+}

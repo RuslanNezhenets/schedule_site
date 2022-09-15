@@ -8,6 +8,7 @@ const typeRoutes = require('./typeRoutes')
 const scheduleRoutes = require('./scheduleRoutes')
 const timetableRoutes = require('./timetableRoutes')
 const teacherlessonRoutes = require('./teacherlessonRoutes')
+const studentsDisciplinesRoutes = require('./studentsDisciplinesRoutes')
 
 router.use('/student', studentRoutes)
 router.use('/teacher', teacherRoutes)
@@ -17,5 +18,6 @@ router.use('/type', typeRoutes)
 router.use('/timetable', timetableRoutes)
 router.use('/schedule', scheduleRoutes)
 router.use('/teacherlesson', teacherlessonRoutes)
+router.use('/studentDiscipline', studentsDisciplinesRoutes)
 
 module.exports = router
