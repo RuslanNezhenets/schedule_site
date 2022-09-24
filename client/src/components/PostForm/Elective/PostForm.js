@@ -9,7 +9,7 @@ const PostForm = ({create, activeStudent, updateItem}) => {
     const [elective, setElective] = useState({studentId: null, disciplineId: null})
     const [error, setError] = useState('')
     const [disciplines, setDisciplines] = useState([])
-    const [activeDiscipline, setActiveDiscipline] = useState({})
+    const [activeDiscipline, setActiveDiscipline] = useState(undefined)
 
     useEffect(() => {
         fetchDiscipline().then(data => setDisciplines(
@@ -41,7 +41,6 @@ const PostForm = ({create, activeStudent, updateItem}) => {
             <div className="error">{error}</div>
             <div className="mb-2"><b>Выберите дисциплину:</b></div>
             <MySelectByTitle
-                defaultValue="Выберите дисциплину"
                 options={disciplines}
                 value={activeDiscipline}
                 onChange={discipline => setActiveDiscipline(discipline)}

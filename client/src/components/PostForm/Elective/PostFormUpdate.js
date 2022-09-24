@@ -9,7 +9,7 @@ const PostFormUpdate = ({item, updateItem, setModalShow}) => {
     const [error, setError] = useState('')
     const [elective, setElective] = useState(item)
     const [disciplines, setDisciplines] = useState([])
-    const [activeDiscipline, setActiveDiscipline] = useState({})
+    const [activeDiscipline, setActiveDiscipline] = useState(undefined)
 
     useEffect(() => {
         setDisciplines(Sort(schedule.disciplines.filter(discipline => discipline.elective === true)), "title")
@@ -17,7 +17,7 @@ const PostFormUpdate = ({item, updateItem, setModalShow}) => {
 
     const Sort = (data, sort) => {
         data = [...data].sort((a, b) => a[sort] > b[sort] ? 1 : -1)
-        setActiveDiscipline(parseInt(data[0].id))
+        setActiveDiscipline(elective.disciplineId)
         return data
     }
 
@@ -48,7 +48,6 @@ const PostFormUpdate = ({item, updateItem, setModalShow}) => {
             <div className="error">{error}</div>
             <div className="mb-2"><b>Выберите дисциплину:</b></div>
             <MySelectByTitle
-                defaultValue="Выберите дисциплину"
                 options={disciplines}
                 value={activeDiscipline}
                 onChange={discipline => setActiveDiscipline(discipline)}

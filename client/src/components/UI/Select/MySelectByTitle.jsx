@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Form from 'react-bootstrap/Form';
+import {Context} from "../../../index";
 
-const MySelectByTitle = ({options, defaultValue, value, onChange}) => {
+const MySelectByTitle = ({options, value, onChange}) => {
+    const {schedule} = useContext(Context)
     return (
         <Form.Select
             value={value}
-            onChange={event => onChange(event.target.value)}
+            onChange={event => onChange(parseInt(event.target.value))}
         >
-            <option disabled value="">{defaultValue}</option>
-            {options.map(option =>
-                <option key={option.id} value={option.id}>
-                    {option.title}
-                </option>
+            {value && <option value={value}>{schedule.searchDiscipline(value) &&
+                schedule.searchDiscipline(value).title}</option>}
+            {options.map(option => {
+                    return (
+                        option.id !== value &&
+                        <option key={option.id} value={option.id}>
+                            {option.title}
+                        </option>
+                    )
+                }
             )}
+
         </Form.Select>
     );
 };
