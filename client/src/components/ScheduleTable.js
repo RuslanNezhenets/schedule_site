@@ -6,12 +6,12 @@ import {Card} from "react-bootstrap";
 import ScheduleModal from "./UI/Modal/ScheduleModal";
 import {fetchLesson, fetchSchedule, fetchTeacherLesson} from "../http/scheduleApi";
 
-const ScheduleTable = observer(() => {
+const ScheduleTable = observer(({week}) => {
     const {schedule} = useContext(Context)
     const [modalShow, setModalShow] = useState(false);
     const [update, setUpdate] = useState(false)
     const [active, setActive] = useState(null)
-    const [activeLesson, setActiveLesson] = useState({week: 1, day: 1, time: 1})
+    const [activeLesson, setActiveLesson] = useState({week: week, day: 1, time: 1})
 
     useEffect(() => {
         UpdateSchedule()
@@ -29,7 +29,6 @@ const ScheduleTable = observer(() => {
         setModalShow(false)
         UpdateSchedule()
     }
-
 
     return (
         <div className="schedule">
@@ -58,7 +57,7 @@ const ScheduleTable = observer(() => {
                                                     setUpdate(true)
                                                     setModalShow(true)
                                                     setActive(lesson)
-                                                    setActiveLesson({week: 1, day: day + 1, time: time + 1})
+                                                    setActiveLesson({week: week, day: day + 1, time: time + 1})
                                                 }}/> :
                                             <Card className="w-100 h-100"></Card>)
                                     })}
@@ -69,7 +68,7 @@ const ScheduleTable = observer(() => {
                                         onClick={() => {
                                             setUpdate(false)
                                             setModalShow(true)
-                                            setActiveLesson({week: 1, day: day + 1, time: time + 1})
+                                            setActiveLesson({week: week, day: day + 1, time: time + 1})
                                         }}
                                     >
                                         Добавить
@@ -82,7 +81,7 @@ const ScheduleTable = observer(() => {
                                     onClick={() => {
                                         setUpdate(false)
                                         setModalShow(true)
-                                        setActiveLesson({week: 1, day: day + 1, time: time + 1})
+                                        setActiveLesson({week: week, day: day + 1, time: time + 1})
                                     }}
                                 />
                         )
