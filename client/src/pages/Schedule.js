@@ -20,11 +20,16 @@ const Schedule = observer(() => {
     useEffect(() => {
         fetchSchedule().then(data => schedule.setSchedule(data))
         fetchLesson().then(data => schedule.setLesson(data))
-        fetchDiscipline().then(data => schedule.setDiscipline(data))
+        fetchDiscipline().then(data => schedule.setDiscipline(Sort(data, "title")))
         fetchType().then(data => schedule.setType(data))
         fetchTeacherLesson().then(data => schedule.setTeacherLesson(data))
-        fetchTeacher().then(data => schedule.setTeacher(data))
+        fetchTeacher().then(data => schedule.setTeacher(Sort(data, "surname")))
     }, [schedule])
+
+    const Sort = (data, sort) => {
+        data = [...data].sort((a, b) => a[sort].toLowerCase() > b[sort].toLowerCase() ? 1 : -1)
+        return data
+    }
 
     useEffect( () => {
         let table = []

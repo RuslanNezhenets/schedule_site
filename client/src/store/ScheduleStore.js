@@ -58,6 +58,12 @@ export default class ScheduleStore {
         return this._discipline.filter(discipline => discipline.id === id)[0]
     }
 
+    searchDisciplineByTitle(title) {
+        if(this._discipline.filter(discipline => discipline.title === title).length === 1)
+            return this._discipline.filter(discipline => discipline.title === title)[0]
+        else return null
+    }
+
     searchType(id) {
         return this._type.filter(type => type.id === id)[0]
     }

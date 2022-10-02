@@ -6,24 +6,28 @@ const MySelectByTitleDiscipline = ({options, value, onChange}) => {
     const {schedule} = useContext(Context)
 
     return (
-        <Form.Select
-            value={value}
-            onChange={event => onChange(parseInt(event.target.value))}
-            data-live-search="true" data-live-search-style="startsWith" className="selectpicker"
-        >
-            {value && <option value={value}>{schedule.searchDiscipline(value) &&
+        <div>
+            <input list="datalistOptions" className="form-control" placeholder="Type to search..."
+                   onChange={event => {
+                       schedule.searchDisciplineByTitle(event.target.value) &&
+                       onChange(schedule.searchDisciplineByTitle(event.target.value).id)
+                   }
+            }
+            />
+            <datalist id="datalistOptions">
+            {value && <option>{schedule.searchDiscipline(value) &&
                 schedule.searchDiscipline(value).title}</option>}
             {options.map(option => {
                     return (
                         option.id !== value &&
-                        <option key={option.id} value={option.id}>
-                            {option.title}
+                        <option key={option.id} value={option.title}>
+                            {/*{option.title}*/}
                         </option>
                     )
                 }
             )}
-
-        </Form.Select>
+            </datalist>
+        </div>
     );
 };
 
