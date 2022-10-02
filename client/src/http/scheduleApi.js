@@ -1,22 +1,7 @@
 import {$host} from "./index";
 
-export const fetchSchedule = async () => {
-    const {data} = await $host.get('api/schedule')
-    return data
-}
-
-export const fetchLesson = async () => {
-    const {data} = await $host.get('api/lesson')
-    return data
-}
-
 export const fetchType = async () => {
     const {data} = await $host.get('api/type')
-    return data
-}
-
-export const fetchTeacherLesson = async () => {
-    const {data} = await $host.get('api/teacherlesson')
     return data
 }
 
@@ -105,5 +90,66 @@ export const updateElective = async (elective) => {
 
 export const deleteElective = async (id) => {
     const {data} = await $host.delete('api/studentDiscipline/' + id)
+    return data
+}
+
+//===== Schedule =====//
+
+export const fetchSchedule = async () => {
+    const {data} = await $host.get('api/schedule')
+    return data
+}
+
+export const createSchedule = async (newLesson) => {
+    const {data} = await $host.post('api/schedule', newLesson)
+    return data
+}
+
+export const updateSchedule = async (lesson) => {
+    const {data} = await $host.put('api/schedule', lesson)
+    return data
+}
+
+export const deleteSchedule = async (id) => {
+    const {data} = await $host.delete('api/schedule/' + id)
+    return data
+}
+
+//===== Lesson =====//
+
+export const fetchLesson = async () => {
+    const {data} = await $host.get('api/lesson')
+    return data
+}
+
+export const createLesson = async (newLesson) => {
+    const {data} = await $host.post('api/lesson', newLesson)
+    return data
+}
+
+export const updateLesson = async (lesson) => {
+    const {data} = await $host.put('api/lesson', lesson)
+    return data
+}
+
+export const deleteLesson = async (id) => {
+    const {data} = await $host.delete('api/lesson/' + id)
+    return data
+}
+
+//===== TeacherLesson =====//
+
+export const fetchTeacherLesson = async () => {
+    const {data} = await $host.get('api/teacherlesson')
+    return data
+}
+
+export const createTeacherLesson = async (newTeacherLesson) => {
+    const {data} = await $host.post('api/teacherlesson', newTeacherLesson)
+    return data
+}
+
+export const updateTeacherLesson = async (teacher_lesson) => {
+    const {data} = await $host.put('api/teacherlesson', teacher_lesson)
     return data
 }

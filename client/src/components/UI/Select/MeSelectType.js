@@ -2,15 +2,16 @@ import React, {useContext} from 'react';
 import Form from 'react-bootstrap/Form';
 import {Context} from "../../../index";
 
-const MySelectByTitle = ({options, value, onChange}) => {
+const MySelectType = ({options, value, onChange}) => {
     const {schedule} = useContext(Context)
+
     return (
         <Form.Select
             value={value}
             onChange={event => onChange(parseInt(event.target.value))}
         >
-            {value && <option value={value}>{schedule.searchDiscipline(value) &&
-                schedule.searchDiscipline(value).title}</option>}
+            {value && <option value={value}>{schedule.searchType(value) &&
+                schedule.searchType(value).title}</option>}
             {options.map(option => {
                     return (
                         option.id !== value &&
@@ -25,4 +26,4 @@ const MySelectByTitle = ({options, value, onChange}) => {
     );
 };
 
-export default MySelectByTitle;
+export default MySelectType;

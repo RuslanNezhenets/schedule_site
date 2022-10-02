@@ -48,7 +48,7 @@ const TimeTable = sequelize.define('time_table', {
 
 const TeacherLesson = sequelize.define('teacher_lesson', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    link: {type: DataTypes.STRING, allowNull: false},
+    link: {type: DataTypes.STRING, allowNull: true},
 })
 
 const StudentDiscipline = sequelize.define('student_discipline', {

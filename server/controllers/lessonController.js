@@ -18,6 +18,27 @@ class LessonController {
         return res.json(lesson)
     }
 
+    async update(req, res) {
+        let {disciplineId, typeId, id} = req.body
+
+        if(!id){
+            throw new Error("не указан ID")
+        }
+
+        const updateLesson = await Lesson.update(
+            {disciplineId, typeId, id}, {where: {id: id}}
+        )
+        return res.json(updateLesson)
+    }
+
+    async delete(req, res) {
+        const {id} = req.params
+        if(!id){
+            throw new Error("не указан ID")
+        }
+        const deleteLesson = await Lesson.destroy({where: {id: id}});
+        res.json(deleteLesson)
+    }
 }
 
 module.exports = new LessonController()

@@ -18,6 +18,28 @@ class ScheduleController {
         return res.json(schedule)
     }
 
+    async update(req, res) {
+        let {week, day, lessonId, timeTableId, id} = req.body
+
+        if(!id){
+            throw new Error("не указан ID")
+        }
+
+        const updateSchedule = await Schedule.update(
+            {week, day, lessonId, timeTableId, id}, {where: {id: id}}
+        )
+        return res.json(updateSchedule)
+    }
+
+    async delete(req, res) {
+        const {id} = req.params
+        if(!id){
+            throw new Error("не указан ID")
+        }
+        const deleteSchedule = await Schedule.destroy({where: {id: id}});
+        res.json(deleteSchedule)
+    }
+
 }
 
 module.exports = new ScheduleController()

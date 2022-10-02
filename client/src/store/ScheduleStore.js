@@ -1,5 +1,4 @@
 import {makeAutoObservable} from "mobx";
-import discipline from "../pages/Discipline";
 
 export default class ScheduleStore {
     constructor() {
@@ -64,6 +63,18 @@ export default class ScheduleStore {
     }
 
     searchTeacher(id) {
+        return this._teacher.filter(teacher => teacher.id === id)[0]
+    }
+
+    searchStudent(id) {
+        return this._student.filter(student => student.id === id)[0]
+    }
+
+    searchTeacherLesson(id) {
+        return this._teacher_lesson.filter(teacher_lesson => teacher_lesson.lessonId === id)[0]
+    }
+
+    searchTeacherForLesson(id) {
         const teacher_lesson = this._teacher_lesson.filter(teacher_lesson => teacher_lesson.lessonId === id)[0]
         if(teacher_lesson)
             return this._teacher.filter(teacher => teacher.id === teacher_lesson.teacherId)[0]

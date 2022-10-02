@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button} from "react-bootstrap";
 import {deleteElective, updateElective} from "../../../http/scheduleApi";
-import MySelectByTitle from "../../UI/Select/MySelectByTitle";
 import {Context} from "../../../index";
+import MySelectByTitleDiscipline from "../../UI/Select/MySelectByTitleDiscipline";
 
 const PostFormUpdate = ({item, updateItem, setModalShow}) => {
     const {schedule} = useContext(Context)
@@ -47,7 +47,7 @@ const PostFormUpdate = ({item, updateItem, setModalShow}) => {
         <form>
             <div className="error">{error}</div>
             <div className="mb-2"><b>Выберите дисциплину:</b></div>
-            <MySelectByTitle
+            <MySelectByTitleDiscipline
                 options={disciplines}
                 value={activeDiscipline}
                 onChange={discipline => setActiveDiscipline(discipline)}

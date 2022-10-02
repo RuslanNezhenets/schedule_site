@@ -18,6 +18,18 @@ class TeacherLessonController {
         return res.json(teacherLesson)
     }
 
+    async update(req, res) {
+        let {teacherId, lessonId, link, id} = req.body
+
+        if(!id){
+            throw new Error("не указан ID")
+        }
+
+        const updateTeacherLesson = await TeacherLesson.update(
+            {teacherId, lessonId, link, id}, {where: {id: id}}
+        )
+        return res.json(updateTeacherLesson)
+    }
 }
 
 module.exports = new TeacherLessonController()

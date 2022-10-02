@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import "../style/main.scss"
 import {Context} from "../index";
 
-const Lesson = ({item}) => {
+const Lesson = ({item, onClick}) => {
     const {schedule} = useContext(Context)
     //const [lesson, setLesson] = useState(null)
     const [discipline, setDiscipline] = useState(null)
@@ -19,12 +19,12 @@ const Lesson = ({item}) => {
         setType(Type)
         //const Link = schedule.searchLink(Lesson.id)
         //if(Link) setLink(Link)
-        const Teacher = schedule.searchTeacher(Lesson.id)
+        const Teacher = schedule.searchTeacherForLesson(Lesson.id)
         if(Teacher) setTeacher(Teacher)
     }, [item.lessonId, schedule])
 
     return (
-        <div className="lesson">
+        <div className="lesson" onClick={onClick}>
             <div className="lesson__type">{type && type.title.substr(0, 3)}</div>
             <div className="lesson__title">{discipline && discipline.title}</div>
             <div className="lesson__teacher">

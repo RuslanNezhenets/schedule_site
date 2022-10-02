@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Button} from "react-bootstrap";
 import {createElective, fetchDiscipline} from "../../../http/scheduleApi";
-import MySelectByTitle from "../../UI/Select/MySelectByTitle";
+import MySelectByTitle from "../../UI/Select/MySelectByTitleDiscipline";
 import {Context} from "../../../index";
 
 const PostForm = ({create, activeStudent, updateItem}) => {

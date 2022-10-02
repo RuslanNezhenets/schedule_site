@@ -39,15 +39,15 @@ const Teacher = observer(() => {
             />
             <div className="items">
                 {schedule.teachers.map((teacher, i) =>
-                        <TeacherItem
-                            key={i}
-                            item={teacher}
-                            onClick={() => {
-                                setUpdate(true)
-                                setModalShow(true)
-                                setActive(teacher)
-                            }}
-                        />
+                    <TeacherItem
+                        key={i}
+                        item={teacher}
+                        onClick={() => {
+                            setUpdate(true)
+                            setModalShow(true)
+                            setActive(teacher)
+                        }}
+                    />
                 )}
             </div>
             <Button

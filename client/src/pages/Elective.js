@@ -10,7 +10,7 @@ import ElectiveItem from "../components/ElectiveItem";
 const Elective = observer(() => {
     const {schedule} = useContext(Context)
     const [students, setStudents] = useState([])
-    const [activeStudent, setActiveStudent] = useState('')
+    const [activeStudent, setActiveStudent] = useState(0)
     const [modalShow, setModalShow] = useState(false);
     const [update, setUpdate] = useState(false)
     const [active, setActive] = useState(null)
@@ -55,10 +55,10 @@ const Elective = observer(() => {
             />
             <div className="mb-2"><b>Выберите студента:</b></div>
             <MySelectByName
-                defaultValue="Выберите студента"
                 options={students}
                 value={activeStudent}
-                onChange={student => {setActiveStudent(student)
+                onChange={student => {
+                    setActiveStudent(student)
                     UpdateElective()
                 }}
             />
