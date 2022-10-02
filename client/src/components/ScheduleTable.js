@@ -18,8 +18,7 @@ const ScheduleTable = observer(() => {
     }, [schedule])
 
     const UpdateSchedule = () => {
-        fetchLesson().then(data => {console.log(data)
-            schedule.setLesson(data)})
+        fetchLesson().then(data => schedule.setLesson(data))
         fetchSchedule().then(data => schedule.setSchedule(data))
         fetchTeacherLesson().then(data => schedule.setTeacherLesson(data))
         schedule.setTable([[]])

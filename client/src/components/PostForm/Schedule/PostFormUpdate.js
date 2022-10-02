@@ -22,7 +22,8 @@ const PostFormUpdate = ({item, updateItem, setModalShow}) => {
         Sort(schedule.disciplines, "title")
 
         setActiveType(lesson.typeId)
-        setActiveTeacher(schedule.searchTeacherForLesson(lesson.id).id)
+        if(schedule.searchTeacherForLesson(lesson.id))
+            setActiveTeacher(schedule.searchTeacherForLesson(lesson.id).id)
         setLink(schedule.searchLink(lesson.id))
     }, [schedule, lesson.id, lesson.typeId])
 
@@ -52,11 +53,9 @@ const PostFormUpdate = ({item, updateItem, setModalShow}) => {
     const DeleteScheduleLesson = async (e) => {
         e.preventDefault()
 
-        console.log(lesson)
-        console.log("id в Schedule: " + item.id)
-        console.log("id lesson: " + item.lessonId)
-        await deleteSchedule(item.id)
         await deleteLesson(item.lessonId)
+        await deleteSchedule(item.id)
+
         setLesson(item)
         updateItem()
         setModalShow(false)
