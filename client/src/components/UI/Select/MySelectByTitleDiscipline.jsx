@@ -9,6 +9,7 @@ const MySelectByTitleDiscipline = ({options, value, onChange}) => {
         <Form.Select
             value={value}
             onChange={event => onChange(parseInt(event.target.value))}
+            data-live-search="true" data-live-search-style="startsWith" className="selectpicker"
         >
             {value && <option value={value}>{schedule.searchDiscipline(value) &&
                 schedule.searchDiscipline(value).title}</option>}

@@ -18,7 +18,6 @@ const PostForm = ({create, activeStudent, updateItem}) => {
     }, [schedule])
 
     const Sort = (data, sort) => {
-        console.log(data)
         data = [...data].sort((a, b) => a[sort].toLowerCase() > b[sort].toLowerCase() ? 1 : -1)
         setActiveDiscipline(data[0].id)
         return data

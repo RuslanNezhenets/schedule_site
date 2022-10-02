@@ -12,7 +12,7 @@ const PostFormUpdate = ({item, updateItem, setModalShow}) => {
     const [activeDiscipline, setActiveDiscipline] = useState(undefined)
 
     useEffect(() => {
-        setDisciplines(Sort(schedule.disciplines.filter(discipline => discipline.elective === true)), "title")
+        setDisciplines(Sort(schedule.disciplines.filter(discipline => discipline.elective === true), "title"))
     }, [schedule])
 
     const Sort = (data, sort) => {
