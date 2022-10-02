@@ -16,7 +16,7 @@ const Student = sequelize.define('student', {
     surname: {type: DataTypes.STRING, allowNull: false},
     name: {type: DataTypes.STRING, allowNull: false},
     patronymic: {type: DataTypes.STRING, allowNull: false},
-    telegramId: {type: DataTypes.STRING, unique: true, allowNull: false}
+    telegramId: {type: DataTypes.STRING, unique: true, allowNull: true}
 })
 
 const Lesson = sequelize.define('lesson', {

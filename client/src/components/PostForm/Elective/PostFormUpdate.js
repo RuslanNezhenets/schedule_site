@@ -16,7 +16,7 @@ const PostFormUpdate = ({item, updateItem, setModalShow}) => {
     }, [schedule])
 
     const Sort = (data, sort) => {
-        data = [...data].sort((a, b) => a[sort] > b[sort] ? 1 : -1)
+        data = [...data].sort((a, b) => a[sort].toLowerCase() > b[sort].toLowerCase() ? 1 : -1)
         setActiveDiscipline(elective.disciplineId)
         return data
     }

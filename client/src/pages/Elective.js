@@ -29,11 +29,12 @@ const Elective = observer(() => {
     }
 
     const Sort = (data, sort) => {
-        data = [...data].sort((a, b) => a[sort] > b[sort] ? 1 : -1)
+        data = [...data].sort((a, b) => a[sort].toLowerCase() > b[sort].toLowerCase() ? 1 : -1)
         if (!activeStudent)
             setActiveStudent(data[0].id)
         return data
     }
+
 
     const createElective = (newElective) => {
         schedule.setElective([...schedule.electives, newElective])

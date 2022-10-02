@@ -23,8 +23,14 @@ const Teacher = observer(() => {
     }
 
     const updateTeacher = () => {
-        fetchTeacher().then(data => schedule.setTeacher(data))
+        fetchTeacher().then(data => schedule.setTeacher(Sort(data, "surname")))
     }
+
+    const Sort = (data, sort) => {
+        data = [...data].sort((a, b) => a[sort].toLowerCase() > b[sort].toLowerCase() ? 1 : -1)
+        return data
+    }
+
 
     return (
         <div>

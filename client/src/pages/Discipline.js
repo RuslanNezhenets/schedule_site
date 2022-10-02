@@ -23,7 +23,12 @@ const Discipline = observer(() => {
     }
 
     const updateDiscipline = () => {
-        fetchDiscipline().then(data => schedule.setDiscipline(data))
+        fetchDiscipline().then(data => schedule.setDiscipline(Sort(data, "title")))
+    }
+
+    const Sort = (data, sort) => {
+        data = [...data].sort((a, b) => a[sort].toLowerCase() > b[sort].toLowerCase() ? 1 : -1)
+        return data
     }
 
     return (
